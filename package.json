@@ -1,0 +1,10 @@
+{
+  "name": "taro-apollo",
+  "version": "1.0.0",
+  "description": "apollo for Taro",
+  "main": "index.js",
+  "repository": "git@github.com:kdong007/taro-apollo.git",
+  "author": "Mars Dong <kdong@hetao.ai>",
+  "license": "MIT",
+  "private": false
+}
