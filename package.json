@@ -2,9 +2,29 @@
   "name": "taro-apollo",
   "version": "1.0.0",
   "description": "apollo for Taro",
-  "main": "index.js",
+  "main": "build",
   "repository": "git@github.com:kdong007/taro-apollo.git",
-  "author": "Mars Dong <kdong@hetao.ai>",
+  "homepage": "https://github.com/kdong007/taro-apollo",
+  "author": "Mars Dong <kdong007@hotmail.com>",
+  "keywords": [
+    "taro",
+    "apollo",
+    "graphql"
+  ],
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "build": "babel src -d build --presets=env",
+    "publish": "yarn build; yarn publish; rm -rf build"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.6.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "lodash.debounce": "^4.0.8",
+    "lodash.get": "^4.4.2"
+  }
 }

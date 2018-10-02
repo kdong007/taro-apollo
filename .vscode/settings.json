@@ -1,0 +1,12 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.packageManager": "yarn",
+    "cSpell.words": [
+        "hotmail",
+        "kdong",
+        "unmount",
+        "wechat"
+    ]
+}
