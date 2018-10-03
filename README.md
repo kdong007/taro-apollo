@@ -33,7 +33,7 @@ const client = new ApolloClient({
 setApolloClient(client);
 ```
 
-apollo组件化 
+**apollo组件化**
 ```js
 
 import { withQuery } from "taro-apollo";
@@ -71,7 +71,7 @@ export default class MyComponent extends Taro.Component {
 有需要注意的是我把原有skip和variables逻辑二合一了 当query需要variables && variables结果为空时自动skip
 
 
-直接发query/mutation
+**直发query/mutation**
 ```js
 import { sendQuery, sendMutation } from "taro-apollo";
 
