@@ -9,6 +9,18 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-        "semi": "error"
+        "indent": [
+            "error",
+            4
+        ],
+        "semi": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
+        ]
     }
 }

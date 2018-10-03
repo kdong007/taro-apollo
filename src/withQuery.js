@@ -1,4 +1,3 @@
-
 import _ from "lodash";
 import { getApolloClient } from "./apolloClient";
 
@@ -14,7 +13,7 @@ function optionsEqual(op1, op2) {
 }
 
 
-export function withQuery(config = {}) {
+export default function withQuery(config = {}) {
     const {
         query: configQuery,
         variables: configVariables,
@@ -76,8 +75,8 @@ export function withQuery(config = {}) {
 
             delete this._querySubscription;
             delete this._queryWatcher;
-
         }
+
         _watchOrUpdateQuery = (props, state) => {
             if (shouldSkip(props, state)) {
                 return;
