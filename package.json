@@ -1,6 +1,6 @@
 {
   "name": "taro-apollo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "apollo for Taro",
   "main": "build",
   "repository": "git@github.com:kdong007/taro-apollo.git",
@@ -15,8 +15,7 @@
   "private": false,
   "scripts": {
     "build": "babel src -d build",
-    "clean": "rm -rf build",
-    "publish": "yarn build && yarn publish"
+    "clean": "rm -rf build"
   },
   "dependencies": {
     "lodash": "^4.17.11"
