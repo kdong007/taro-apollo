@@ -95,4 +95,9 @@ sendMutation(mutation, variables, refetchQueries)
 # TODO
 - withMutation
 
+# 一些推荐用的apollo link
+- [apollo-link-batch-http](https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-batch-http) 替代 apollo-link-http 多个request自动打包发送
+- [apollo-link-retry](https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-retry) 自动重试
+- [apollo-link-logger](https://github.com/blackxored/apollo-link-logger) reqeust日志
+- [apollo-link-persisted-queries](https://github.com/apollographql/apollo-link-persisted-queries) 压缩query 减少网络上传量 略微增加安全性 一行搞定
 
