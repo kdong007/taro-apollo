@@ -13,13 +13,13 @@ function optionsEqual(op1, op2) {
 }
 
 function cleanTypename(obj) {
-    if (_.isObject(obj)) {
+    if (_.isArray(obj)) {
+        return obj.map(cleanTypename);
+    } else if (_.isObject(obj)) {
         return _(obj)
             .omitBy((val, key) => key === "__typename")
             .mapValues(cleanTypename)
             .value();
-    } else if (_.isArray(obj)) {
-        return obj.map(cleanTypename);
     } else {
         return obj;
     }
