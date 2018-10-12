@@ -5,9 +5,6 @@
 # 安装
 ```
 npm install taro-apollo --save
-```
-或者
-```
 yarn add taro-apollo
 ```
 
