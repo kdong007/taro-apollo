@@ -15,7 +15,9 @@
   "private": false,
   "scripts": {
     "build": "babel src -d build",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "prepublish": "yarn build",
+    "postpublish": "yarn clean"
   },
   "dependencies": {
     "lodash": "^4.17.11"
