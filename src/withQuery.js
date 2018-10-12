@@ -12,6 +12,19 @@ function optionsEqual(op1, op2) {
     return op1.query === op2.query && _.isEqual(op1.variables, op2.variables);
 }
 
+function cleanTypename(obj) {
+    if (_.isObject(obj)) {
+        return _(obj)
+            .omitBy((val, key) => key === "__typename")
+            .mapValues(cleanTypename)
+            .value();
+    } else if (_.isArray(obj)) {
+        return obj.map(cleanTypename);
+    } else {
+        return obj;
+    }
+}
+
 
 export default function withQuery(config = {}) {
     const {
@@ -107,9 +120,12 @@ export default function withQuery(config = {}) {
             if (!this._queryWatcher) {
                 return;
             }
-            const result = this._queryWatcher.currentResult();
+
             this.prevProps = _.assign({}, this.props);
-            _.assign(this.props, result);
+
+            const { data, ...otherResult } = this._queryWatcher.currentResult();
+            _.assign(this.props, otherResult, { data: cleanTypename(data) });
+
             this._unsafeCallUpdate = true;
             this.setState({}, function () {
                 delete this._unsafeCallUpdate;
