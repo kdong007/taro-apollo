@@ -1,6 +1,6 @@
 {
   "name": "taro-apollo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "apollo for Taro",
   "main": "build",
   "repository": "git@github.com:kdong007/taro-apollo.git",
