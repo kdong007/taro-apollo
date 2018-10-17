@@ -123,14 +123,34 @@ export default function withQuery(config = {}) {
 
             this.prevProps = _.assign({}, this.props);
 
+
             const { data, ...otherResult } = this._queryWatcher.currentResult();
-            _.assign(this.props, otherResult, { data: cleanTypename(data) });
+
+            const updateProps = {
+                data: cleanTypename(data),
+                ...otherResult,
+                fetchMore: this._fetchMore,
+                refetch: this._refetch,
+            };
+            _.assign(this.props, updateProps);
 
             this._unsafeCallUpdate = true;
-            this.setState({}, function () {
-                delete this._unsafeCallUpdate;
-            });
+            this.setState({}, () => delete this._unsafeCallUpdate);
         }
+
+        _fetchMore = options => this._queryWatcher.fetchMore(options)
+
+        _refetch = () => {
+            if (!this.queryWatcher) {
+                return Promise.resolve(null);
+            }
+            this.queryWatcher.resetLastResults();
+            const promise = this.queryWatcher.refetch()
+                .then(this._updateResult)
+                .catch(this._updateResult);
+            this._updateResult();
+            return promise;
+        };
 
     };
 }
