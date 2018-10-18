@@ -141,11 +141,11 @@ export default function withQuery(config = {}) {
         _fetchMore = options => this._queryWatcher.fetchMore(options)
 
         _refetch = () => {
-            if (!this.queryWatcher) {
+            if (!this._queryWatcher) {
                 return Promise.resolve(null);
             }
-            this.queryWatcher.resetLastResults();
-            const promise = this.queryWatcher.refetch()
+            this._queryWatcher.resetLastResults();
+            const promise = this._queryWatcher.refetch()
                 .then(this._updateResult)
                 .catch(this._updateResult);
             this._updateResult();
