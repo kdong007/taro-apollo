@@ -30,6 +30,8 @@ export default function withQuery(config = {}) {
     const {
         query: configQuery,
         variables: configVariables,
+        fetchPolicy: configFetchPolicy,
+        ignoreCache,
     } = config;
 
     const evalQuery = (props, state) => {
@@ -95,11 +97,17 @@ export default function withQuery(config = {}) {
                 return;
             }
 
+
+            let fetchPolicy = configFetchPolicy;
+            if (!fetchPolicy && ignoreCache) {
+                fetchPolicy = "network-only";
+            }
             const options = {
                 query: evalQuery(props, state),
                 variables: evalVariables(props, state),
+                fetchPolicy,
             };
-
+            
             if (optionsEqual(options, this.prevOptions)) {
                 return;
             }
@@ -122,7 +130,6 @@ export default function withQuery(config = {}) {
             }
 
             this.prevProps = _.assign({}, this.props);
-
 
             const { data, ...otherResult } = this._queryWatcher.currentResult();
 
