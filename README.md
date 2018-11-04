@@ -44,6 +44,8 @@ const query = gql`
 
 @withQuery({
     query: query,
+    fetchPolicy: XXX,
+    ignoreCache: true/false, // 设置 fetchPolicy = "network-only"， 为了省事。。 
     variables: (props, state) => {
         return {
             // xxx
