@@ -25,7 +25,6 @@ function cleanTypename(obj) {
     }
 }
 
-
 export default function withQuery(config = {}) {
     const {
         query: configQuery,
@@ -62,12 +61,11 @@ export default function withQuery(config = {}) {
             super(...arguments);
             this._queryWatcher = null;
             this._querySubscription = null;
-            this._updateResult = _.debounce(this._updateResult, 0);
         }
 
-        componentDidMount() {
-            if (super.componentDidMount) {
-                super.componentDidMount(...arguments);
+        componentWillMount() {
+            if (super.componentWillMount) {
+                super.componentWillMount(...arguments);
             }
             this._watchOrUpdateQuery(this.props, this.state);
         }
@@ -96,7 +94,6 @@ export default function withQuery(config = {}) {
             if (shouldSkip(props, state)) {
                 return;
             }
-
 
             let fetchPolicy = configFetchPolicy;
             if (!fetchPolicy && ignoreCache) {
