@@ -104,7 +104,7 @@ export default function withQuery(config = {}) {
                 variables: evalVariables(props, state),
                 fetchPolicy,
             };
-            
+
             if (optionsEqual(options, this.prevOptions)) {
                 return;
             }
@@ -132,6 +132,7 @@ export default function withQuery(config = {}) {
 
             const updateProps = {
                 data: cleanTypename(data),
+                error: null,
                 ...otherResult,
                 fetchMore: this._fetchMore,
                 refetch: this._refetch,
