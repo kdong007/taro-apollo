@@ -3,11 +3,5 @@
     "editor.formatOnPaste": true,
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
-    "cSpell.words": [
-        "hotmail",
-        "kdong",
-        "refetch",
-        "unmount",
-        "wechat"
-    ]
+    "cSpell.words": ["hotmail", "kdong", "refetch", "unmount", "wechat"]
 }
