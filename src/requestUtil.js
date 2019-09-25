@@ -20,3 +20,20 @@ export async function sendMutation(mutation, variables, refetchQueries) {
     }
     return data;
 }
+
+export function sendSubscription(query, variables, callback, errorFunc, ignoreCache) {
+    const params = { query, variables };
+    if (ignoreCache) {
+      params.fetchPolicy = "network-only";
+    }
+
+    getApolloClient().subscribe(params)
+    .subscribe({
+      next(data) {
+        callback(data)
+      },
+      error(err){
+        errorFunc(err)  
+      }
+    });
+}
